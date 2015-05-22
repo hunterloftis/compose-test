@@ -1,0 +1,28 @@
+web:
+  build: .
+  command: 'node server.js'
+  environment:
+    PORT: 3000
+    REDIS_URL: 'redis://redis:6379'
+    DATABASE_URL: 'postgres://postgres:6212'
+  ports:
+    - '3000:3000'
+  links:
+    - herokuRedis
+    - herokuPostgresql
+worker:
+  build: .
+  command: 'node server.js'
+  environment:
+    PORT: 3001
+    REDIS_URL: 'redis://redis:6379'
+    DATABASE_URL: 'postgres://postgres:6212'
+  ports:
+    - '3001:3001'
+  links:
+    - herokuRedis
+    - herokuPostgresql
+herokuRedis:
+  image: redis
+herokuPostgresql:
+  image: postgres
