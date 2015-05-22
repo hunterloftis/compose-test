@@ -1,0 +1,12 @@
+{
+  "name": "Example Name",
+  "description": "An example app.json for heroku-docker",
+  "scripts": {
+
+  },
+  "env": {
+    "foo": "bar"
+  },
+  "image": "hunterloftis/node",
+  "addons": [ "heroku-redis", "heroku-postgresql" ]
+}
